@@ -7,12 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.jaden.mycats.ui.models.FavoriteScreenRoute
 import com.jaden.mycats.ui.models.HomeScreenRoute
 import com.jaden.mycats.ui.models.ProfileScreenRoute
-import com.jaden.mycats.ui.models.ScreenRoute
+import com.jaden.mycats.ui.navigation.getRoute
+import com.jaden.mycats.ui.navigation.navigate
 
 private val navigationBarItems = listOf(
     HomeScreenRoute,
@@ -33,18 +32,6 @@ fun MyCatBottomBar(navController: NavController) {
             )
         }
     }
-}
-
-@Composable
-fun NavController.getRoute(): ScreenRoute = ScreenRoute
-    .mapToScreenRoute(currentBackStackEntryAsState().value?.destination?.route)
-
-fun NavController.navigate(screenRoute: ScreenRoute) = this.navigate(screenRoute.route) {
-    graph.startDestinationRoute?.let {
-        popUpTo(it) { saveState = true }
-    }
-    launchSingleTop = true
-    restoreState = true
 }
 
 @Preview
