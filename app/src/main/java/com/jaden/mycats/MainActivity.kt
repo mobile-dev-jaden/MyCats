@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,6 +17,7 @@ import com.jaden.mycats.ui.models.HomeScreenRoute
 import com.jaden.mycats.ui.models.ProfileScreenRoute
 import com.jaden.mycats.ui.screens.FavoriteScreen
 import com.jaden.mycats.ui.screens.HomeScreen
+import com.jaden.mycats.ui.screens.HomeViewModel
 import com.jaden.mycats.ui.screens.ProfileScreen
 import com.jaden.mycats.ui.theme.MyCatsTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +43,8 @@ class MainActivity : ComponentActivity() {
                         startDestination = HomeScreenRoute.route,
                     ) {
                         composable(HomeScreenRoute.route) {
-                            HomeScreen()
+                            val homeViewModel: HomeViewModel = hiltViewModel()
+                            HomeScreen(homeViewModel)
                         }
 
                         composable(FavoriteScreenRoute.route) {
