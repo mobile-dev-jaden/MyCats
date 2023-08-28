@@ -77,6 +77,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation(project(mapOf("path" to ":core-network")))
+    implementation(project(mapOf("path" to ":core-database")))
 }
 
 kapt {
