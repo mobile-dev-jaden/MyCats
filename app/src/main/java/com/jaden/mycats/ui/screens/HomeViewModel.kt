@@ -2,8 +2,8 @@ package com.jaden.mycats.ui.screens
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.jaden.core_network.ImageSearchService
 import com.jaden.core_network.response.ImageInformationList
+import com.jaden.core_network.service.ImageSearchService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow

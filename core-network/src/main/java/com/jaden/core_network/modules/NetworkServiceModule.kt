@@ -1,5 +1,8 @@
-package com.jaden.core_network
+package com.jaden.core_network.modules
 
+import com.jaden.core_network.serviceimpl.ImageSearchServiceImpl
+import com.jaden.core_network.api.ImageSearchApi
+import com.jaden.core_network.service.ImageSearchService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

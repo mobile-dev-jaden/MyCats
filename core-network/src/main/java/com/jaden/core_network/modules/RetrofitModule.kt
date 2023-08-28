@@ -1,5 +1,10 @@
-package com.jaden.core_network
+package com.jaden.core_network.modules
 
+import com.jaden.core_network.BuildConfig
+import com.jaden.core_network.modules.annotations.ApiKeyContainedOkHttpClient
+import com.jaden.core_network.modules.annotations.ApiKeyContainedRetrofit
+import com.jaden.core_network.modules.annotations.DefaultOkHttpClient
+import com.jaden.core_network.modules.annotations.DefaultRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,7 +12,6 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -38,11 +42,3 @@ object RetrofitModule {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 }
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class DefaultRetrofit
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class ApiKeyContainedRetrofit

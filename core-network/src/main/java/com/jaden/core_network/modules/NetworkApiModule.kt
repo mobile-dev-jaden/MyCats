@@ -1,5 +1,7 @@
-package com.jaden.core_network
+package com.jaden.core_network.modules
 
+import com.jaden.core_network.api.ImageSearchApi
+import com.jaden.core_network.modules.annotations.ApiKeyContainedRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

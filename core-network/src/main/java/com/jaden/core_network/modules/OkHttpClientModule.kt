@@ -1,13 +1,13 @@
-package com.jaden.core_network
+package com.jaden.core_network.modules
 
+import com.jaden.core_network.interceptor.ApiKeyHeaderInterceptor
+import com.jaden.core_network.modules.annotations.ApiKeyContainedOkHttpClient
+import com.jaden.core_network.modules.annotations.DefaultOkHttpClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -29,23 +29,3 @@ object OkHttpClientModule {
             .build()
 }
 
-object ApiKeyHeaderInterceptor: Interceptor {
-    private const val X_API_KEY = "x-api-key"
-    override fun intercept(chain: Interceptor.Chain): Response {
-
-        val request = chain.request().newBuilder()
-            .addHeader(X_API_KEY, BuildConfig.API_KEY)
-            .build()
-
-        return chain.proceed(request)
-    }
-
-}
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class DefaultOkHttpClient
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class ApiKeyContainedOkHttpClient

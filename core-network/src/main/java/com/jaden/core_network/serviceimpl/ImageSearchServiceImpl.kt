@@ -1,29 +1,15 @@
-package com.jaden.core_network
+package com.jaden.core_network.serviceimpl
 
+import com.jaden.core_network.api.ImageSearchApi
 import com.jaden.core_network.response.ImageInformationList
+import com.jaden.core_network.service.ImageSearchService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
-import retrofit2.http.GET
-import retrofit2.http.Query
 import javax.inject.Inject
-
-interface ImageSearchService {
-    fun getImages(
-        onStart: () -> Unit,
-        onCompletion: () -> Unit,
-    ): Flow<ImageInformationList>
-}
-
-interface ImageSearchApi {
-    @GET("images/search")
-    suspend fun getImages(
-        @Query("limit") limit: Int = 20
-    ): ImageInformationList
-}
 
 class ImageSearchServiceImpl @Inject constructor(
     private val imageSearchApi: ImageSearchApi
@@ -35,7 +21,8 @@ class ImageSearchServiceImpl @Inject constructor(
     ): Flow<ImageInformationList> = flow {
         val imageInformationList = imageSearchApi.getImages()
         emit(imageInformationList)
-    }.flowOn(Dispatchers.IO)
+    }
+        .flowOn(Dispatchers.IO)
         .onStart { onStart() }
         .onCompletion { onCompletion() }
 }
