@@ -1,28 +1,39 @@
 package com.jaden.mycats.ui.screens
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.jaden.network.response.ImageInformationList
-import com.jaden.network.service.ImageSearchService
+import androidx.lifecycle.viewModelScope
+import com.jaden.data.models.ImageModel
+import com.jaden.data.models.ImageModels
+import com.jaden.data.repositories.ImageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val imageSearchService: ImageSearchService,
+    private val imageRepository: ImageRepository
 ): ViewModel() {
 
-    fun getImagesFlow(): Flow<ImageInformationList> = try {
-        imageSearchService.getImages({
-            Log.d("Home View Model", "On Start flow")
-        }, {
-            Log.d("Home View Model", "On Complete flow")
-        })
-    } catch (exception: Exception) {
-        Log.d("", "Error :: ${exception.message}")
-        emptyFlow()
+    private val _imageModels: MutableStateFlow<ImageModels> = MutableStateFlow(emptyList())
+    val imageModels: StateFlow<ImageModels> = _imageModels
+
+    init { fetchImages() }
+
+    private fun fetchImages() = viewModelScope.launch {
+        imageRepository.getImages().collectLatest {
+            _imageModels.emit(it)
+        }
+    }
+
+    fun favoriteImage(imageModel: ImageModel) = viewModelScope.launch {
+        imageRepository.favoriteImage(imageModel)
+            .onCompletion { fetchImages() }
+            .collect()
     }
 
 }
