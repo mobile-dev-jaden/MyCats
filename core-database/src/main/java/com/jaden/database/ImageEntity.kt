@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+typealias ImageEntityList = List<ImageEntity>
+
 @Entity(tableName = "image")
 data class ImageEntity(
 	@PrimaryKey val uuid: String,

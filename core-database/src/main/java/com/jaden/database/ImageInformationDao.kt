@@ -7,8 +7,15 @@ import androidx.room.Update
 
 @Dao
 interface ImageInformationDao {
+	companion object {
+		private const val IS_FAVORITE = 1
+	}
+
 	@Query("SELECT * FROM image")
 	suspend fun getAll(): List<ImageEntity>
+
+	@Query("SELECT * FROM image WHERE favorite = $IS_FAVORITE")
+	suspend fun getFavorites(): List<ImageEntity>
 
 	@Insert
 	suspend fun insertAll(vararg imageEntity: ImageEntity)

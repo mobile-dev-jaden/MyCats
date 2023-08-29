@@ -1,6 +1,6 @@
 package com.jaden.network.modules
 
-import com.jaden.network.BuildConfig
+import com.jaden.core_network.BuildConfig
 import com.jaden.network.modules.annotations.ApiKeyContainedOkHttpClient
 import com.jaden.network.modules.annotations.ApiKeyContainedRetrofit
 import com.jaden.network.modules.annotations.DefaultOkHttpClient

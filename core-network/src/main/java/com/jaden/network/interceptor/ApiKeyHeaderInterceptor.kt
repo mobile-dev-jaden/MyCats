@@ -1,6 +1,6 @@
 package com.jaden.network.interceptor
 
-import com.jaden.network.BuildConfig
+import com.jaden.core_network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
