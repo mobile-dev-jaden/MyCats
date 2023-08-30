@@ -19,7 +19,7 @@ data class CatBreedEntity(
     val affectionLevel: Int,
 
     @ColumnInfo(name = "alt_names")
-    val altNames: String,
+    val altNames: String?,
 
     @ColumnInfo(name = "bidability")
     val bidAbility: Int,
@@ -28,7 +28,7 @@ data class CatBreedEntity(
     val catFriendly: Int,
 
     @ColumnInfo(name = "cfa_url")
-    val cfaUrl: String,
+    val cfaUrl: String?,
 
     @ColumnInfo(name = "child_friendly")
     val childFriendly: Int,
@@ -88,7 +88,7 @@ data class CatBreedEntity(
     val rare: Int,
 
     @ColumnInfo(name = "reference_image_id")
-    val referenceImageId: String,
+    val referenceImageId: String?,
 
     @ColumnInfo(name = "rex")
     val rex: Int,
@@ -112,15 +112,15 @@ data class CatBreedEntity(
     val temperament: String,
 
     @ColumnInfo(name = "vcahospitals_url")
-    val vcaHospitalsUrl: String,
+    val vcaHospitalsUrl: String?,
 
     @ColumnInfo(name = "vetstreet_url")
-    val vetStreetUrl: String,
+    val vetStreetUrl: String?,
 
     @ColumnInfo(name = "vocalisation")
     val vocalisation: Int,
 
     @ColumnInfo(name = "wikipedia_url")
-    val wikipediaUrl: String
+    val wikipediaUrl: String?
 
 )

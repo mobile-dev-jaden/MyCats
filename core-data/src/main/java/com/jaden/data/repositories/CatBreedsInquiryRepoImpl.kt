@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class CatBreedsInquiryRepositoryImpl @Inject constructor(
+class CatBreedsInquiryRepoImpl @Inject constructor(
     private val catBreedsDao: CatBreedsDao,
     private val catBreedsInquiryService: CatBreedsInquiryService
-): CatBreedsInquiryRepository {
+): CatBreedsInquiryRepo {
 
     override fun getBreeds(): Flow<CatBreedModels> = flow {
         var catBreedEntities = catBreedsDao.getBreeds()
