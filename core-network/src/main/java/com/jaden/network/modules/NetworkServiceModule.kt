@@ -1,40 +1,36 @@
 package com.jaden.network.modules
 
-import com.jaden.network.api.CatBreedsInquiryApi
-import com.jaden.network.api.FavoriteImageApi
-import com.jaden.network.api.ImageSearchApi
 import com.jaden.network.service.CatBreedsInquiryService
 import com.jaden.network.service.CatBreedsInquiryServiceImpl
 import com.jaden.network.service.FavoriteImageService
 import com.jaden.network.service.ImageSearchService
 import com.jaden.network.serviceimpl.FavoriteImageServiceImpl
 import com.jaden.network.serviceimpl.ImageSearchServiceImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkServiceModule {
+abstract class NetworkServiceModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideImageSearchService(
-        imageSearchApi: ImageSearchApi
-    ): ImageSearchService = ImageSearchServiceImpl(imageSearchApi)
+    abstract fun bindsImageSearchService(
+        imageSearchServiceImpl: ImageSearchServiceImpl
+    ): ImageSearchService
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideFavoriteImageService(
-        favoriteImageApi: FavoriteImageApi
-    ): FavoriteImageService = FavoriteImageServiceImpl(favoriteImageApi)
+    abstract fun bindsFavoriteImageService(
+        favoriteImageServiceImpl: FavoriteImageServiceImpl
+    ): FavoriteImageService
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideCatBreedsInquiryService(
-        catBreedsInquiryApi: CatBreedsInquiryApi
-    ): CatBreedsInquiryService = CatBreedsInquiryServiceImpl(catBreedsInquiryApi)
+    abstract fun bindsCatBreedsInquiryService(
+        catBreedsInquiryServiceImpl: CatBreedsInquiryServiceImpl
+    ): CatBreedsInquiryService
 }
