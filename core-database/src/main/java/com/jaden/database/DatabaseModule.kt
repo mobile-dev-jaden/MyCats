@@ -2,6 +2,8 @@ package com.jaden.database
 
 import android.content.Context
 import androidx.room.Room
+import com.jaden.database.dao.CatBreedsDao
+import com.jaden.database.dao.ImageInformationDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,4 +33,10 @@ object DatabaseModule {
 	fun providesImageInformationDao(
 		database: Database
 	): ImageInformationDao = database.imageInformationDao()
+
+	@Singleton
+	@Provides
+	fun providesCatBreedsDao(
+		database: Database
+	): CatBreedsDao = database.catBreedsDao()
 }

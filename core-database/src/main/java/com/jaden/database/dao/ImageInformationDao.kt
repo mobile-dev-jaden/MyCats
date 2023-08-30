@@ -1,27 +1,22 @@
-package com.jaden.database
+package com.jaden.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.jaden.database.entities.ImageEntities
+import com.jaden.database.entities.ImageEntity
 
 @Dao
 interface ImageInformationDao {
-	companion object {
-		private const val IS_FAVORITE = 1
-	}
-
 	@Query("SELECT * FROM image")
-	suspend fun getAll(): List<ImageEntity>
-
-	@Query("SELECT * FROM image WHERE favorite = $IS_FAVORITE")
-	suspend fun getFavorites(): List<ImageEntity>
+	suspend fun getAll(): ImageEntities
 
 	@Insert
 	suspend fun insertAll(vararg imageEntity: ImageEntity)
 
 	@Insert
-	suspend fun insertAll(imageEntities: List<ImageEntity>)
+	suspend fun insertAll(imageEntities: ImageEntities)
 
 	@Update
 	suspend fun updateFavoriteImage(vararg imageEntity: ImageEntity)

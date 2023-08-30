@@ -5,8 +5,8 @@ import com.jaden.data.mappers.asEntity
 import com.jaden.data.mappers.asModel
 import com.jaden.data.models.ImageModel
 import com.jaden.data.models.ImageModels
-import com.jaden.database.ImageEntity
-import com.jaden.database.ImageInformationDao
+import com.jaden.database.dao.ImageInformationDao
+import com.jaden.database.entities.ImageEntity
 import com.jaden.network.service.ImageSearchService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

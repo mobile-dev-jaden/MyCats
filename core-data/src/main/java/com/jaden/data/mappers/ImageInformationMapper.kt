@@ -2,13 +2,13 @@ package com.jaden.data.mappers
 
 import com.jaden.data.models.ImageModel
 import com.jaden.data.models.ImageModels
-import com.jaden.database.ImageEntity
-import com.jaden.database.ImageEntityList
+import com.jaden.database.entities.ImageEntities
+import com.jaden.database.entities.ImageEntity
 import com.jaden.network.models.response.ImageInformationList
 
 object ImageInformationMapper {
 
-    fun asEntity(imageInformationList: ImageInformationList): ImageEntityList =
+    fun asEntity(imageInformationList: ImageInformationList): ImageEntities =
         imageInformationList.map { imageInformation ->
             ImageEntity(
                 uuid = imageInformation.id,
@@ -17,15 +17,15 @@ object ImageInformationMapper {
             )
         }
 
-    fun asModel(imageEntityList: ImageEntityList): ImageModels =
+    fun asModel(imageEntityList: ImageEntities): ImageModels =
         imageEntityList.map {
             val imageModel = ImageModel(it.uuid, it.url, it.favorite)
             imageModel
         }
 }
 
-fun ImageInformationList.asEntity(): ImageEntityList =
+fun ImageInformationList.asEntity(): ImageEntities =
     ImageInformationMapper.asEntity(this)
 
-fun ImageEntityList.asModel(): ImageModels =
+fun ImageEntities.asModel(): ImageModels =
     ImageInformationMapper.asModel(this)
