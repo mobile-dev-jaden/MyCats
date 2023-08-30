@@ -1,5 +1,7 @@
 package com.jaden.data.module
 
+import com.jaden.data.repositories.CatBreedsInquiryRepository
+import com.jaden.data.repositories.CatBreedsInquiryRepositoryImpl
 import com.jaden.data.repositories.ImageRepository
 import com.jaden.data.repositories.ImageRepositoryImpl
 import dagger.Binds
@@ -17,4 +19,10 @@ abstract class RepositoryModule {
     abstract fun bindsImageRepository(
         imageRepositoryImpl: ImageRepositoryImpl
     ): ImageRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsCatBreedsRepository(
+        catBreedsInquiryRepositoryImpl: CatBreedsInquiryRepositoryImpl
+    ): CatBreedsInquiryRepository
 }
