@@ -1,6 +1,6 @@
 package com.jaden.network.service
 
-import com.jaden.network.response.ImageInformationList
+import com.jaden.network.models.response.ImageInformationList
 
 interface ImageSearchService {
 

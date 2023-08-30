@@ -1,6 +1,6 @@
 package com.jaden.network.api
 
-import com.jaden.network.response.ImageInformationList
+import com.jaden.network.models.response.ImageInformationList
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -4,7 +4,7 @@ import com.jaden.data.models.ImageModel
 import com.jaden.data.models.ImageModels
 import com.jaden.database.ImageEntity
 import com.jaden.database.ImageEntityList
-import com.jaden.network.response.ImageInformationList
+import com.jaden.network.models.response.ImageInformationList
 
 object ImageInformationMapper {
 

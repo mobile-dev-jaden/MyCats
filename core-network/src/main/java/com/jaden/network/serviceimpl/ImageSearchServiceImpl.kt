@@ -1,7 +1,7 @@
 package com.jaden.network.serviceimpl
 
 import com.jaden.network.api.ImageSearchApi
-import com.jaden.network.response.ImageInformationList
+import com.jaden.network.models.response.ImageInformationList
 import com.jaden.network.service.ImageSearchService
 import javax.inject.Inject
 
