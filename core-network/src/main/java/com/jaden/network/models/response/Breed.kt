@@ -1,9 +1,9 @@
 package com.jaden.network.models.response
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
+typealias Breeds = List<Breed>
+
 data class Breed(
     @Json(name = "adaptability")
     val adaptability: Int,
@@ -105,7 +105,7 @@ data class Breed(
     val vCaHospitalsUrl: String,
 
     @Json(name = "vetstreet_url")
-    val vetstreetUrl: String,
+    val vetStreetUrl: String,
 
     @Json(name = "vocalisation")
     val vocalisation: Int,

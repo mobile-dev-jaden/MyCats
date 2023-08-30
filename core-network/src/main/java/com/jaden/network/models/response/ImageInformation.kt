@@ -1,14 +1,12 @@
 package com.jaden.network.models.response
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 typealias ImageInformationList = List<ImageInformation>
 
-@JsonClass(generateAdapter = true)
 data class ImageInformation(
     @Json(name = "breeds")
-    val breeds: List<Breed>,
+    val breeds: Breeds,
 
     @Json(name = "height")
     val height: Int,
@@ -21,5 +19,4 @@ data class ImageInformation(
 
     @Json(name = "width")
     val width: Int
-
 )
