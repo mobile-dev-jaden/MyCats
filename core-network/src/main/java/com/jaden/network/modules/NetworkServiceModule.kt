@@ -1,7 +1,10 @@
 package com.jaden.network.modules
 
+import com.jaden.network.api.CatBreedsInquiryApi
 import com.jaden.network.api.FavoriteImageApi
 import com.jaden.network.api.ImageSearchApi
+import com.jaden.network.service.CatBreedsInquiryService
+import com.jaden.network.service.CatBreedsInquiryServiceImpl
 import com.jaden.network.service.FavoriteImageService
 import com.jaden.network.service.ImageSearchService
 import com.jaden.network.serviceimpl.FavoriteImageServiceImpl
@@ -28,4 +31,10 @@ object NetworkServiceModule {
     fun provideFavoriteImageService(
         favoriteImageApi: FavoriteImageApi
     ): FavoriteImageService = FavoriteImageServiceImpl(favoriteImageApi)
+
+    @Provides
+    @Singleton
+    fun provideCatBreedsInquiryService(
+        catBreedsInquiryApi: CatBreedsInquiryApi
+    ): CatBreedsInquiryService = CatBreedsInquiryServiceImpl(catBreedsInquiryApi)
 }

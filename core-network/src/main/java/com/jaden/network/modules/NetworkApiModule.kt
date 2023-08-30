@@ -1,8 +1,10 @@
 package com.jaden.network.modules
 
+import com.jaden.network.api.CatBreedsInquiryApi
 import com.jaden.network.api.FavoriteImageApi
 import com.jaden.network.api.ImageSearchApi
 import com.jaden.network.modules.annotations.ApiKeyContainedRetrofit
+import com.jaden.network.modules.annotations.DefaultRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +29,12 @@ object NetworkApiModule {
         @ApiKeyContainedRetrofit
         retrofit: Retrofit
     ): FavoriteImageApi = retrofit.create(FavoriteImageApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideBreedsInquiryApi(
+        @DefaultRetrofit
+        retrofit: Retrofit
+    ): CatBreedsInquiryApi = retrofit.create(CatBreedsInquiryApi::class.java)
 }
 
