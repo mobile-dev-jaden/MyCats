@@ -1,5 +1,6 @@
 package com.jaden.network.modules
 
+import com.jaden.network.api.FavoriteImageApi
 import com.jaden.network.api.ImageSearchApi
 import com.jaden.network.modules.annotations.ApiKeyContainedRetrofit
 import dagger.Module
@@ -19,5 +20,12 @@ object NetworkApiModule {
         @ApiKeyContainedRetrofit
         retrofit: Retrofit
     ): ImageSearchApi = retrofit.create(ImageSearchApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideFavoriteImageApi(
+        @ApiKeyContainedRetrofit
+        retrofit: Retrofit
+    ): FavoriteImageApi = retrofit.create(FavoriteImageApi::class.java)
 }
 
